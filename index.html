@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#100d0c">
+    <meta name="description" content="Duskfall is an original, touch-controlled retro first-person shooter built for iPhone Safari.">
+    <title>Duskfall — Survive the Breach</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="game-shell" id="gameShell" aria-label="Duskfall game">
+      <canvas id="gameCanvas" aria-label="First-person game view"></canvas>
+      <div class="screen-vignette" aria-hidden="true"></div>
+      <div class="scanlines" aria-hidden="true"></div>
+
+      <div class="hud" id="hud" aria-label="Game status">
+        <div class="hud-top">
+          <div class="hud-brand" aria-hidden="true">
+            <span class="hud-brand-mark">DF</span>
+            <span class="hud-brand-rule"></span>
+            <span class="hud-brand-name">DUSKFALL</span>
+          </div>
+          <div class="objective-panel">
+            <span class="hud-label">DIRECTIVE 01</span>
+            <span id="objectiveText">Clear the station</span>
+          </div>
+          <button class="pause-control" id="pauseButton" type="button" aria-label="Pause game" title="Pause game">
+            <span aria-hidden="true">II</span>
+          </button>
+        </div>
+        <div class="hud-stats">
+          <div class="stat stat-health">
+            <span class="stat-icon" aria-hidden="true">+</span>
+            <span class="stat-copy"><span class="hud-label">VITALS</span><strong id="healthValue">100</strong></span>
+          </div>
+          <div class="stat stat-ammo">
+            <span class="stat-icon" aria-hidden="true">///</span>
+            <span class="stat-copy"><span class="hud-label">AMMO</span><strong id="ammoValue">12 / 48</strong></span>
+          </div>
+          <div class="stat stat-kills">
+            <span class="stat-icon" aria-hidden="true">×</span>
+            <span class="stat-copy"><span class="hud-label">HOSTILES</span><strong id="killsValue">0 / 0</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="crosshair" class="crosshair" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+      <div class="touch-controls" aria-label="Touch game controls">
+        <div class="stick move-stick" id="moveStick" role="group" aria-label="Drag to move">
+          <span class="stick-ring" aria-hidden="true"></span>
+          <span class="stick-knob" id="moveKnob" aria-hidden="true"></span>
+          <span class="stick-caption" aria-hidden="true">MOVE</span>
+        </div>
+        <div class="stick look-stick" id="lookStick" role="group" aria-label="Drag to look around">
+          <span class="stick-ring" aria-hidden="true"></span>
+          <span class="stick-knob" id="lookKnob" aria-hidden="true"></span>
+          <span class="stick-caption" aria-hidden="true">LOOK</span>
+        </div>
+        <button class="action-button reload-button" id="reloadButton" type="button" aria-label="Reload weapon">RLD</button>
+        <button class="action-button fire-button" id="fireButton" type="button" aria-label="Fire weapon"><span>FIRE</span></button>
+      </div>
+
+      <section class="overlay start-screen" id="startScreen" role="dialog" aria-modal="true" aria-labelledby="gameTitle">
+        <div class="overlay-panel">
+          <div class="panel-topline"><span>OUTPOST K-9 // SIGNAL LOST</span><span>01:47</span></div>
+          <div class="title-wrap">
+            <span class="title-kicker">A RETRO FIRST-PERSON SURVIVAL GAME</span>
+            <h1 id="gameTitle">DUSK<span>FALL</span></h1>
+            <p>The station has gone quiet. Enter the breach, eliminate every hostile and find your way out.</p>
+          </div>
+          <div class="mission-strip"><span class="mission-dot"></span><span>MISSION 01</span><strong>Contain the outbreak</strong></div>
+          <div class="control-guide">
+            <div><span class="guide-label">IPHONE</span><span>Left stick move · right stick aim · tap fire</span></div>
+            <div><span class="guide-label">DESKTOP</span><span>WASD move · mouse aim · click fire</span></div>
+          </div>
+          <button class="primary-button" id="startButton" type="button">ENTER THE BREACH <span aria-hidden="true">›</span></button>
+          <p class="panel-footnote">Landscape is recommended on iPhone for a wider view.</p>
+        </div>
+      </section>
+
+      <section class="overlay pause-screen" id="pauseScreen" role="dialog" aria-modal="true" aria-labelledby="pauseTitle" hidden>
+        <div class="overlay-panel compact-panel">
+          <div class="panel-topline"><span>OUTPOST K-9</span><span>PAUSED</span></div>
+          <span class="title-kicker">TAKE A BREATH</span>
+          <h2 id="pauseTitle">MISSION PAUSED</h2>
+          <p>Your run is waiting. Resume when you are ready to continue.</p>
+          <button class="primary-button" id="resumeButton" type="button">RESUME MISSION <span aria-hidden="true">›</span></button>
+        </div>
+      </section>
+
+      <section class="overlay end-screen" id="endScreen" role="dialog" aria-modal="true" aria-labelledby="endTitle" hidden>
+        <div class="overlay-panel compact-panel">
+          <div class="panel-topline"><span>OUTPOST K-9</span><span>RUN COMPLETE</span></div>
+          <span class="title-kicker">AFTER ACTION REPORT</span>
+          <h2 id="endTitle">MISSION COMPLETE</h2>
+          <p id="endMessage">The outpost is secure.</p>
+          <button class="primary-button" id="restartButton" type="button">PLAY AGAIN <span aria-hidden="true">›</span></button>
+        </div>
+      </section>
+    </main>
+    <script src="./audio.js" defer></script>
+    <script src="./game.js" defer></script>
+  </body>
+</html>
