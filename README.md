@@ -2,9 +2,11 @@
 
 Duskfall is a compact, original first-person browser shooter built for iPhone Safari. Clear eight hostiles, collect supplies and reach the extraction gate. The 3D view uses a Canvas raycaster; the artwork and sound are generated in the browser. There are no packages to install or external assets to load.
 
+**Play:** https://agelastic.github.io/duskfall-iphone-fps/
+
 ## Play
 
-Open `index.html` through a static web server, or use the GitHub Pages URL once the repository is published. Landscape orientation gives the widest view on iPhone.
+Open the GitHub Pages link above in Safari. Landscape orientation gives the widest view on iPhone.
 
 | Device | Controls |
 | --- | --- |
@@ -23,9 +25,9 @@ python3 -m http.server 8000
 
 Then open `http://localhost:8000` in a browser. On an iPhone, use a deployed HTTPS link such as GitHub Pages.
 
-## Publish with GitHub Pages
+## Publishing
 
-Push this directory to the root of a GitHub repository. In that repository, select **Settings → Pages → Deploy from a branch**, then select **main** and **/(root)**. GitHub will show the public play URL when deployment completes. The empty `.nojekyll` file ensures the static files are served as-is.
+GitHub Pages publishes the root of `main`. The empty `.nojekyll` file ensures the static files are served as-is. The `scripts/build.mjs` script copies the game into `dist/` for the separate private Sites deployment.
 
 ## Files
 
